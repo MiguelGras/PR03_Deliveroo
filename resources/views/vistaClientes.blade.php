@@ -53,10 +53,12 @@
         <div class="div-2-categoria">
             <p>Categoria:</p>
             <form method="post">
-                <label class="container">Italiana
+                @foreach($listaTipo as $tipo)
+                <label class="container">{{$tipo->tipo}}
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
+                @endforeach
             </form>
         </div>
     </div>
