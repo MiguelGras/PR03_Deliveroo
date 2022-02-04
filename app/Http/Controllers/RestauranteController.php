@@ -108,7 +108,8 @@ class RestauranteController extends Controller
     /*Mostrar*/
     public function vistaCliente(){
         $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto from tbl_restaurante inner join tbl_foto where tbl_foto.restaurante_fk=tbl_restaurante.id;');
-        return view('vistaclientes', compact('listaRestaurantes'));
+        $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+        return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
     }
     /**
      * Show the form for creating a new resource.

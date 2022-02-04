@@ -20,7 +20,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         </div>
         <div class="div-1-sesion">
-            <button class="btn"><i class="fas fa-user"></i>  Iniciar sesiÃ³n</button>
+            <button class="btn"><i class="fas fa-user"></i>  Iniciar sesión</button>
         </div>
     </div>
     <div class="contenido">
@@ -53,10 +53,12 @@
         <div class="div-2-categoria">
             <p>Categoria:</p>
             <form method="post">
-                <label class="container">Italiana
+                @foreach($listaTipo as $tipo)
+                <label class="container">{{$tipo->tipo}}
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
+                @endforeach
             </form>
         </div>
     </div>
