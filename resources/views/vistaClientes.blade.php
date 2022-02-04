@@ -20,7 +20,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         </div>
         <div class="div-1-sesion">
-            <button class="btn"><i class="fas fa-user"></i>  Iniciar sesiÃ³n</button>
+            <button class="btn"><i class="fas fa-user"></i>  Iniciar sesión</button>
         </div>
     </div>
     <div class="contenido">
