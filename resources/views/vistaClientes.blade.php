@@ -28,11 +28,11 @@
         <div class="div-2-radio">
             <form  method="post">
                 <label>
-                    <input type="radio" name="" checked/>
+                    <input type="radio" name="servicio" checked/>
                     <span> Recogida</span>
                 </label>
                 <label>
-                    <input type="radio" name=""/>
+                    <input type="radio" name="servicio"/>
                     <span> Envio</span>
                 </label>
             </form>
@@ -41,11 +41,11 @@
             <p>Buscar por:</p>
             <form  method="post">
                 <label>
-                    <input type="radio" name="" checked/>
+                    <input type="radio" name="orden" checked/>
                     <span> Valoracion</span>
                 </label>
                 <label>
-                    <input type="radio" name=""/>
+                    <input type="radio" name="orden"/>
                     <span> Tiempo</span>
                 </label>
             </form>

@@ -1,0 +1,298 @@
+* {
+    margin: 1%;
+    font-family: 'Open Sans', sans-serif;
+    color: #333333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/*Menu top*/
+
+.div-1 {
+    float: left;
+    width: 100%;
+    height: 10%;
+    margin: 0%;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    padding-bottom: 0.5%;
+}
+
+.div-1-logo {
+    width: 10%;
+    float: left;
+}
+
+.div-1-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.div-1-input-busqueda {
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 40%;
+    float: left;
+}
+
+.div-1-input-busqueda input {
+    margin-top: 0.5%;
+    padding-left: 7%;
+}
+
+.div-1-input-busqueda i {
+    position: absolute;
+    color: grey;
+    opacity: 0.7;
+}
+
+.div-1-sesion {
+    margin-left: 30%;
+    width: 10%;
+    float: left;
+}
+
+.div-1-sesion i {
+    color: #35B8B2;
+}
+
+.btn {
+    background-color: white;
+    border-color: #d6dbdb;
+    color: #333333;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn:hover {
+    border-color: #b6bfc8;
+}
+
+.contenido {
+    float: left;
+}
+
+
+/*Menu izquierda*/
+
+.div-2 {
+    float: left;
+    width: 20%;
+    margin: 1%;
+    margin-top: 0.5%;
+    font-size: 2.1vh;
+}
+
+.div-2-radio {
+    margin: 2%;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    padding-bottom: 0.5%;
+}
+
+.div-2-radio input[type='radio'],
+.div-2-orden input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    background-clip: content-box;
+    border: 3px solid #b6bfc8;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+    margin-bottom: -1%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.div-2-radio input:checked,
+.div-2-orden input:checked {
+    background-color: #35B8B2;
+    border: 3px solid #35B8B2;
+}
+
+.div-2-radio input:hover,
+.div-2-orden input:hover {
+    border: 3px solid #35B8B2;
+    transition: 0.3s;
+}
+
+.div-2-radio label,
+.div-2-orden label,
+.div-2-categoria label {
+    width: 100%;
+    cursor: pointer;
+}
+
+.div-2-radio input,
+.div-2-orden input,
+.div-2-categoria input {
+    /*transform: scale(2);*/
+    margin-right: 5px;
+}
+
+.div-2-orden {
+    margin: 2%;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    padding-bottom: 0.5%;
+}
+
+.div-2-orden p,
+.div-2-categoria p {
+    font-weight: bold;
+}
+
+.div-2-categoria {
+    margin: 2%;
+    float: left;
+    width: 100%;
+}
+
+.div-2-categoria input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    background-clip: content-box;
+    border: 3px solid #b6bfc8;
+    background-color: #e7e6e7;
+    margin-bottom: -1%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.div-2-categoria input:checked {
+    background-color: #35B8B2;
+    border: 3px solid #35B8B2;
+}
+
+.div-2-categoria input:hover {
+    border: 3px solid #35B8B2;
+    transition: 0.3s;
+}
+
+
+/*checkbox de los huevos*/
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmark {
+    position: absolute;
+    top: -22%;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 3px solid #b6bfc8;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.container:hover input~.checkmark {
+    border: 3px solid #35B8B2;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.container input:checked~.checkmark {
+    background-color: #35B8B2;
+    border: 3px solid #35B8B2;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/*Contenido derecha*/
+
+.div-3 {
+    float: left;
+    width: 75%;
+}
+
+.div-3-restaurante {
+    margin-left: 3%;
+    width: 29%;
+    height: 40%;
+    float: left;
+}
+
+.div-3-restaurante-img {
+    width: 100%;
+    height: 60%;
+}
+
+.div-3-restaurante-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+}
+
+.div-3-restaurante-contenido {
+    height: 40%;
+    float: left;
+    width: 100%;
+}
