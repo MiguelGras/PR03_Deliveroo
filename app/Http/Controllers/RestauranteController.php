@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RestauranteCrear;
 use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Controllers\Exception;
+
 
 class RestauranteController extends Controller
 {
@@ -102,6 +105,11 @@ class RestauranteController extends Controller
         //
     }
 
+    /*Mostrar*/
+    public function vistaCliente(){
+        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto from tbl_restaurante inner join tbl_foto where tbl_foto.restaurante_fk=tbl_restaurante.id;');
+        return view('vistaclientes', compact('listaRestaurantes'));
+    }
     /**
      * Show the form for creating a new resource.
      *

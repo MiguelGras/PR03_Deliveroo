@@ -14,6 +14,10 @@ use App\Http\Controllers\RestauranteController;
 |
 */
 
+
+/*Mostrar vista clientes*/
+Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
+
 /* MOSTRAR */
 Route::get('/mostrar',[RestauranteController::class, 'mostrarRestaurante']);
 
@@ -29,3 +33,4 @@ Route::post('/crear',[RestauranteController::class, 'crearRestaurantePost']);
 Route::get('/modificarRestaurante/{id}', [RestauranteController::class, 'modificarRestaurante']);
 
 Route::put('/modificarRestaurante',[RestauranteController::class, 'modificarRestaurantePut']);
+

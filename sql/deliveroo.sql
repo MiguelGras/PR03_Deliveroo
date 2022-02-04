@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `tbl_foto`
 --
+CREATE DATABASE IF NOT EXISTS `deliveroo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
+USE `deliveroo`;
 
 CREATE TABLE `tbl_foto` (
   `id` int(11) NOT NULL,
