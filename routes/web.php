@@ -14,5 +14,23 @@ use App\Http\Controllers\RestauranteController;
 |
 */
 
-/*Mostrar*/
+
+/*Mostrar vista clientes*/
 Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
+
+/* MOSTRAR */
+Route::get('/mostrar',[RestauranteController::class, 'mostrarRestaurante']);
+
+/* ELIMINAR */
+Route::delete('/eliminarRestaurante/{id}', [RestauranteController::class, 'eliminarRestaurante']);
+
+/* CREAR */
+Route::get('/crear',[RestauranteController::class, 'crearRestaurante']);
+
+Route::post('/crear',[RestauranteController::class, 'crearRestaurantePost']);
+
+/* MODIFICAR */
+Route::get('/modificarRestaurante/{id}', [RestauranteController::class, 'modificarRestaurante']);
+
+Route::put('/modificarRestaurante',[RestauranteController::class, 'modificarRestaurantePut']);
+
