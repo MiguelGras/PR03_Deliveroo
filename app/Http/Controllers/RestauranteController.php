@@ -16,7 +16,7 @@ use App\Http\Controllers\Exception;
 class RestauranteController extends Controller
 {
     public function mostrarRestaurante(){
-        $listaRestaurante = DB::table('tbl_restaurante')->join('tbl_tipo_cocina','tbl_restaurante.id','=','tbl_tipo_cocina.id')->select('*')->get();
+        $listaRestaurante = $listaRestaurantes=DB::table('tbl_restaurante')->join('tbl_foto','tbl_restaurante.id','=','tbl_foto.restaurante_fk')->where('tbl_restaurante.id','=',1);
         return view('mostrar', compact('listaRestaurante'));
         //return $listaPersona;
     }

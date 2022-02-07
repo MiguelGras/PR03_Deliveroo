@@ -1,53 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Mostrar Restaurantes</title>
-    <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- bootstrap-->
+    <script type="text/javascript" src="js/iconos_g.js"></script> <!-- iconos FontAwesome-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jquery-->
+    <script src="js/js.js"></script>
+    <link rel="stylesheet" href="css/style_restaurante.css">
+    <title>Deliveroo - Food Delivery</title>
 </head>
-<body class="mostrar">
-    <div>
-        <form action="{{url('crear')}}" method="GET">
-            <button class= "botonCre" type="submit" name="Crear" value="Crear">Crear</button>
-        </form>
-        <form action="{{url('logout')}}" method="GET">
-            <button id="logout" class= "botonCre" type="submit" name="logout" value="logout">Logout</button>
-        </form>
+<body>
+    <div class="div-1">
+        <div class="div-1-logo">
+            <a href="#"><img src="storage/deliveroo-logo.png"></a>
+        </div>
     </div>
-    <div class="row flex-cv">
-        <table class="table">
-            <tr class="active">
-                <th>ID</th>
-                <th>FOTO</th>
-                <th>NOMBRE</th>
-                <th>VALORACIÓN</th>
-                <th>TIPO DE COMIDA</th>
-                <th>ELIMINAR</th>
-                <th>MODIFICAR</th>
-            </tr>
-            @foreach($listaRestaurante as $restaurante)
-                <tr>
-                    <td>{{$restaurante->id}}</td>
-                    <td style="padding: auto; text-align: center"><img src="{{asset('storage').'/'.$restaurante->foto}}" width="100"></td>
-                    <td>{{$restaurante->nombre}}</td>
-                    <td>{{$restaurante->valoracion}}</td>
-                    <td>{{$restaurante->tipo}}</td>
-                    <td><form action="{{url('eliminarRestaurante/'.$restaurante->id)}}" method="POST">
-                        @csrf
-                        <!--{{csrf_field()}}--->
-                        {{method_field('DELETE')}}
-                        <!--@method('DELETE')--->
-                        <button class= "botonEli" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
-                    </form></td>
-                    <td><form action="{{url('modificarRestaurante/'.$restaurante->id)}}" method="GET">
-                        <button class= "botonAct" type="submit" name="Modificar" value="Modificar">Modificar</button>
-                    </form></td>
-                </tr>
-            @endforeach
-        </table>
+    <div class="contenido">
+        <div class="div-2">
+            <div class="div-2-img">
+                <img src="storage/uploads/foto1.jpg">
+            </div>
+        </div>
+        <div class="div-3">
+            <div class="div-3-h1"><h1>McDonald's</h1></div>
+            <div class="div-3-tiempo-tipo">
+                <p class="tipo-grey">25 min </p>
+                <p class="tipo-grey">Americana &nbsp; Burger</p>
+            </div>
+            <div class="div-3-valoracion-envio">
+                <i class="fas fa-star val-green fa-2x"></i>
+                <p class="val-green">8.5 &nbsp; Excelente</p>
+            </div>
+        </div>
     </div>
+    
+</div>
+
 </body>
 </html>
