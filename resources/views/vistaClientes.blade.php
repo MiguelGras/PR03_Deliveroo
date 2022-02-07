@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- bootstrap-->
     <script type="text/javascript" src="js/iconos_g.js"></script> <!-- iconos FontAwesome-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jquery-->
+    <script src="js/js.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Deliveroo - Food Delivery</title>
 </head>
@@ -69,8 +70,37 @@
                     <img src="{{asset('storage').'/'.$restaurante->foto}}">
                 </div>
                 <div class="div-3-restaurante-contenido">
-                    <h3>{{$restaurante->nombre}}</h3>
-                    <p>Valoracion:{{$restaurante->valoracion}}/10</p>
+                    <h5>{{ Str::limit($restaurante->nombre, 24,"") }}</h5>
+                    @if($restaurante->valoracion <5)
+                        <i class="fas fa-star val-grey"></i><p class="val-grey">&nbsp;{{$restaurante->valoracion}}&nbsp;</p>
+                    @elseif($restaurante->valoracion <7.5 && $restaurante->valoracion >5)
+                        <i class="fas fa-star val-blue"></i><p class="val-blue">&nbsp;{{$restaurante->valoracion}} Bueno &nbsp;</p>
+                    @else
+                        <i class="fas fa-star val-green"></i><p class="val-green">&nbsp;{{$restaurante->valoracion}} Excelente &nbsp;</p>
+                    @endif
+                    @php
+                        $tipo=DB::select(DB::raw("SELECT tbl_tipo_cocina.tipo FROM tbl_tipo_cocina INNER JOIN tbl_tipo_cocina_restaurante on tbl_tipo_cocina.id=tbl_tipo_cocina_restaurante.tipo_cocina_fk where tbl_tipo_cocina_restaurante.restaurante_fk=:tipo"),array('tipo' => $restaurante->id));
+                    @endphp
+                    @php $tipo_str=""; @endphp
+                    @foreach ($tipo as $tipo)
+                        @php
+                            $tipo_str=$tipo_str.$tipo->tipo." ";
+                        @endphp
+                    @endforeach
+                    <p class="tipo-grey">{{ Str::limit($tipo_str, 17,"...") }}</p>
+                    @php
+                        $servicio=DB::select(DB::raw("SELECT tbl_servicio.tipo from tbl_servicio INNER JOIN tbl_tipo_servicio_restaurante on tbl_servicio.id=tbl_tipo_servicio_restaurante.tipo_servicio_fk where tbl_tipo_servicio_restaurante.restaurante_fk=:servicio"),array('servicio' => $restaurante->id));
+                    @endphp
+                    @php $servicio_str=""; @endphp
+                    @foreach ($servicio as $servicio)
+                        @php
+                            $servicio_str=$servicio_str.$servicio->tipo." ";
+                        @endphp
+                    @endforeach
+                    @foreach ($servicio as $servicio)
+                    <p class="tipo-grey">{{$servicio_str}}</p>
+                    @endforeach
+                    <p class="tipo-grey">&nbsp; {{$restaurante->tiempo_medio}} min &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
             </div>
         @endforeach        

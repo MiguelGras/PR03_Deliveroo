@@ -8,6 +8,21 @@ html {
     scroll-behavior: smooth;
 }
 
+.div-3 {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 /*Menu top*/
 
@@ -278,6 +293,7 @@ html {
     width: 29%;
     height: 40%;
     float: left;
+    cursor: pointer;
 }
 
 .div-3-restaurante-img {
@@ -295,4 +311,33 @@ html {
     height: 40%;
     float: left;
     width: 100%;
+    font-size: 2.3vh;
+}
+
+.div-3-restaurante-contenido p {
+    float: left;
+}
+
+.div-3-restaurante-contenido h5 {
+    font-weight: bold;
+}
+
+.div-3-restaurante-contenido i {
+    float: left;
+}
+
+.val-grey {
+    color: grey;
+}
+
+.val-blue {
+    color: #007E8A;
+}
+
+.val-green {
+    color: #77BF2A;
+}
+
+.tipo-grey {
+    color: grey;
 }
