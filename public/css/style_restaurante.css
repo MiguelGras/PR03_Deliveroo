@@ -52,7 +52,6 @@ html {
     float: left;
     width: 50%;
     margin-top: 2%;
-    line-height: 0.7;
 }
 
 .div-3 h1 {
@@ -73,6 +72,15 @@ html {
 }
 
 .div-3-valoracion-envio i {
+    float: left;
+}
+
+.div-3-valoracion-envio {
+    float: left;
+    width: 50%;
+}
+
+.div-3-valoracion-envio p {
     float: left;
 }
 

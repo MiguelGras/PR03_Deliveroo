@@ -19,7 +19,7 @@ use App\Http\Controllers\RestauranteController;
 Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
 
 /* MOSTRAR */
-Route::get('/mostrar{id}',[RestauranteController::class, 'mostrarRestaurante']);
+Route::get('/mostrar/{id}',[RestauranteController::class, 'mostrarRestaurante']);
 
 /* ELIMINAR */
 Route::delete('/eliminarRestaurante/{id}', [RestauranteController::class, 'eliminarRestaurante']);
