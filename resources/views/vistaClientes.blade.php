@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/iconos_g.js"></script> <!-- iconos FontAwesome-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jquery-->
     <script src="js/js.js"></script>
+    <script src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Deliveroo - Food Delivery</title>
 </head>
@@ -18,10 +19,19 @@
         </div>
         <div class="div-1-input-busqueda">
             <i class="fa fa-search"></i>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input type="hidden" name="_method" value="POST" id="postSearch">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" id="Search" aria-label="Search" onkeyup="filtro(); return false;">
         </div>
         <div class="div-1-sesion">
-            <button class="btn"><i class="fas fa-user"></i>  Iniciar sesión</button>
+            @if(Session::get('email'))
+                <form action='{{url('logout')}}' method='get'>
+                    <button class='btn' type='submit' ><i class='fas fa-user'></i>  Cerrar sesión</button>
+                </form>
+            @else
+                <form action='{{url('formlogin')}}' method='get'>
+                    <button class='btn' type='submit' ><i class='fas fa-user'></i>  Iniciar sesión</button>
+                </form>
+            @endif
         </div>
     </div>
     <div class="contenido">
@@ -63,11 +73,15 @@
             </form>
         </div>
     </div>
-    <div class="div-3">
+    <div class="div-3" id="div-3">
         @foreach($listaRestaurantes as $restaurante)
             <div class="div-3-restaurante">
                 <div class="div-3-restaurante-img">
-                    <img src="{{asset('storage').'/'.$restaurante->foto}}">
+                    @if(Session::get('email'))
+                        <a href={{url('crear')}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                    @else
+                        <a href={{url('formlogin')}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                    @endif
                 </div>
                 <div class="div-3-restaurante-contenido">
                     <h5>{{ Str::limit($restaurante->nombre, 24,"") }}</h5>
@@ -100,7 +114,7 @@
                     @foreach ($servicio as $servicio)
                     <p class="tipo-grey">{{$servicio_str}}</p>
                     @endforeach
-                    <p class="tipo-grey">&nbsp; {{$restaurante->tiempo_medio}} min &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p class="tipo-grey">&nbsp; {{$restaurante->tiempo_medio}} min &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
             </div>
         @endforeach        
