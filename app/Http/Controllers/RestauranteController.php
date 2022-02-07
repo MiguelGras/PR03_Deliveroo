@@ -15,6 +15,7 @@ use App\Http\Controllers\Exception;
 
 class RestauranteController extends Controller
 {
+
     public function mostrarRestaurante($id){
         $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.id='.$id.';');
         return view('mostrar', compact('listaRestaurantes'));
@@ -34,7 +35,7 @@ class RestauranteController extends Controller
         return redirect('mostrar');
     }
 
-    /*Crear*/
+/*Crear*/
     public function crearRestaurante(){
         return view('crear');
     }
@@ -104,13 +105,46 @@ class RestauranteController extends Controller
     {
         //
     }
-
-    /*Mostrar*/
-    public function vistaCliente(){
-        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto where tbl_foto.restaurante_fk=tbl_restaurante.id;');
-        $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+/*Login*/
+    public function formlogin(){
+        return view('formlogin');
+    }
+    public function loginPost(Request $request){
+        $datos_frm = $request->except('_token','_method');
+        $email=$datos_frm['correo'];
+        $password=$datos_frm['pass'];
+        $password=md5($password);
+        $users = DB::table("tbl_usuario")->where('correo','=',$email)->where('pass','=',$password)->count();
+        if($users == 1){
+            //Establecer la sesion
+            $request->session()->put('email',$request->correo);
+            return redirect('vistaclientes');
+        }else{
+            //Redirigir al login
+            return redirect('formlogin');
+        }
+    }
+    public function logout(Request $request){
+        //Olvidas la sesion
+        $request->session()->forget('email');
+        //Eliminar todo
+        $request->session()->flush();
+        return redirect('vistaclientes');
+    }
+/*Mostrar*/
+    public function vistaCliente(Request $request){
+        try {
+            DB::beginTransaction();
+            $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.nombre like ?',['%'.$request->input('Search').'%']);
+            $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $th->getMessage();
+        }
         return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
     }
+
     /**
      * Show the form for creating a new resource.
      *

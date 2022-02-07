@@ -14,6 +14,10 @@ use App\Http\Controllers\RestauranteController;
 |
 */
 
+/*LOGIN Y LOGOUT*/
+Route::get('formlogin',[RestauranteController::class,'formlogin']);
+Route::post('login',[RestauranteController::class,'loginPost']);
+Route::get('logout',[RestauranteController::class,'logout']);
 
 /*Mostrar vista clientes*/
 Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
@@ -33,4 +37,6 @@ Route::post('/crear',[RestauranteController::class, 'crearRestaurantePost']);
 Route::get('/modificarRestaurante/{id}', [RestauranteController::class, 'modificarRestaurante']);
 
 Route::put('/modificarRestaurante',[RestauranteController::class, 'modificarRestaurantePut']);
+
+
 
