@@ -1,0 +1,97 @@
+* {
+    margin: 1%;
+    font-family: 'Open Sans', sans-serif;
+    color: #333333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.div-1 {
+    float: left;
+    width: 100%;
+    height: 10%;
+    margin: 0%;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    padding-bottom: 0.5%;
+}
+
+.div-1-logo {
+    width: 10%;
+    float: left;
+}
+
+.div-1-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.contenido {
+    float: left;
+    width: 100%;
+    margin: 0%;
+}
+
+.div-2 {
+    float: left;
+    width: 40%;
+}
+
+.div-2-img {
+    width: 100%;
+}
+
+.div-2-img img {
+    border-radius: 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.div-3 {
+    float: left;
+    width: 50%;
+    margin-top: 2%;
+}
+
+.div-3 h1 {
+    font-weight: bold;
+}
+
+.tipo-grey {
+    color: rgb(77, 77, 77);
+}
+
+.div-3-tiempo-tipo {
+    float: left;
+    width: 100%;
+}
+
+.div-3-tiempo-tipo p {
+    float: left;
+}
+
+.div-3-valoracion-envio i {
+    float: left;
+}
+
+.div-3-valoracion-envio {
+    float: left;
+    width: 50%;
+}
+
+.div-3-valoracion-envio p {
+    float: left;
+}
+
+.val-grey {
+    color: grey;
+}
+
+.val-blue {
+    color: #007E8A;
+}
+
+.val-green {
+    color: #77BF2A;
+}

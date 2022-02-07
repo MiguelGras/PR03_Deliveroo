@@ -23,7 +23,7 @@ Route::get('logout',[RestauranteController::class,'logout']);
 Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
 
 /* MOSTRAR */
-Route::get('/mostrar',[RestauranteController::class, 'mostrarRestaurante']);
+Route::get('/mostrar/{id}',[RestauranteController::class, 'mostrarRestaurante']);
 
 /* ELIMINAR */
 Route::delete('/eliminarRestaurante/{id}', [RestauranteController::class, 'eliminarRestaurante']);
