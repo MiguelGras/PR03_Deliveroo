@@ -4,7 +4,8 @@
     color: #333333;
 }
 
-html {
+html,
+body {
     scroll-behavior: smooth;
 }
 
@@ -27,9 +28,33 @@ html {
     height: 100%;
 }
 
+.div-1-sesion {
+    margin-left: 70%;
+    width: 12%;
+    float: left;
+}
+
+.div-1-sesion i {
+    color: #35B8B2;
+}
+
+.bt-logout {
+    background-color: white;
+    border-color: #d6dbdb;
+    color: #333333;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.bt-logout:hover {
+    border-color: #b6bfc8;
+}
+
 .contenido {
     float: left;
     width: 100%;
+    height: 10%;
     margin: 0%;
 }
 
@@ -52,6 +77,7 @@ html {
     float: left;
     width: 50%;
     margin-top: 2%;
+    margin-bottom: 0%;
 }
 
 .div-3 h1 {
@@ -77,7 +103,7 @@ html {
 
 .div-3-valoracion-envio {
     float: left;
-    width: 50%;
+    width: 60%;
 }
 
 .div-3-valoracion-envio p {
@@ -94,4 +120,57 @@ html {
 
 .val-green {
     color: #77BF2A;
+}
+
+.font-small {
+    font-weight: bold;
+}
+
+.div-descripcion-galeria {
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    border-top: 1px solid rgb(202, 202, 202);
+}
+
+.div-descripcion-galeria h4 {
+    font-weight: bold;
+}
+
+.div-descripcion {
+    float: left;
+    width: 40%;
+    margin: 1.5%;
+    margin-right: 0%;
+    text-align: justify;
+}
+
+.div-galeria {
+    float: left;
+    width: 50%;
+    margin: 1.5%;
+    margin-left: 2%;
+}
+
+.div-galeria-foto {
+    width: 100%;
+}
+
+.div-galeria-foto {
+    border-radius: 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-color {
+    background-color: #FB5058;
+    border: 1px solid #FB5058;
+    transition: 0.3s;
+}
+
+.btn-color:hover {
+    background-color: #f73a44;
+    border: 1px solid #f73a44;
+    transition: 0.3s;
 }

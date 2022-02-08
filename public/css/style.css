@@ -64,8 +64,8 @@ html {
 }
 
 .div-1-sesion {
-    margin-left: 28%;
-    width: 11%;
+    margin-left: 27%;
+    width: 12%;
     float: left;
 }
 
@@ -340,4 +340,123 @@ html {
 
 .tipo-grey {
     color: grey;
+}
+
+
+/*Registrarse*/
+
+.registrarse {
+    top: 15%;
+    left: 30%;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+
+.region-registrarse form.registrarse-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    justify-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.region-registrarse {
+    height: 100vh;
+    width: 100%;
+}
+
+.region-registrarse>.registrarse {
+    height: 100%;
+}
+
+.region-registrarse form.registrarse-form {
+    background-color: white;
+    width: 85vh;
+    height: 70vh;
+    border-radius: 4px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.region-registrarse form.registrarse-form input {
+    width: 100%;
+}
+
+form.registrarse-form label {
+    font-weight: bold;
+}
+
+.region-registrarse form.registrarse-form input[type='submit'] {
+    margin-top: 15%;
+}
+
+.resize {
+    width: 0;
+    height: 0;
+}
+
+.modalmask:target .resize {
+    width: 63.59vh;
+    height: 31.79vh;
+}
+
+.modalmask {
+    position: fixed;
+    font-family: Arial, sans-serif;
+    top: -2.1%;
+    right: -1%;
+    bottom: -1%;
+    left: -1%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.cerrar {
+    color: white;
+    font-size: 5vh;
+    font-weight: bold;
+    top: 17%;
+    right: 30%;
+    position: absolute;
+    z-index: 1;
+    background-color: #35B8B2;
+    line-height: 35px;
+    width: 35px;
+    text-align: center;
+    border-radius: 3px;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.cerrar:hover {
+    background-color: #2aada7;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-fix {
+    background-color: #35B8B2;
+    color: white;
+}
+
+.btn-fix:hover {
+    background-color: #2aada7;
 }

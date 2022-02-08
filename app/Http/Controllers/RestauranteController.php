@@ -17,7 +17,7 @@ class RestauranteController extends Controller
 {
 
     public function mostrarRestaurante($id){
-        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.id='.$id.';');
+        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio,tbl_restaurante.descripcion from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.id='.$id.';');
         return view('mostrar', compact('listaRestaurantes'));
         //return $listaRestaurantes;
     }
@@ -107,7 +107,7 @@ class RestauranteController extends Controller
     }
 /*Login*/
     public function formlogin(){
-        return view('formlogin');
+        return redirect('vistaclientes');
     }
     public function loginPost(Request $request){
         $datos_frm = $request->except('_token','_method');
@@ -125,7 +125,7 @@ class RestauranteController extends Controller
             return redirect('vistaadmin');
         }else{
             //Redirigir al login
-            return redirect('formlogin');
+            return redirect('vistaclientes');
         }
     }
     public function logout(Request $request){
