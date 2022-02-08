@@ -1,3 +1,7 @@
+window.onload = function() {
+    filtro();
+}
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -16,26 +20,26 @@ function objetoAjax() {
 }
 
 function filtro() {
+
     /* Obtener elemento html donde introduciremos la recarga (datos o mensajes) */
     var div = document.getElementById('div-3');
     /* 
     Obtener elemento/s que se pasarán como parámetros: token, method, inputs... 
-    var token = document.getElementById('token').getAttribute("content");
+    var token = document.getElementById('token').getAttribute("content");*/
 
-
-    Usar el objeto FormData para guardar los parámetros que se enviarán:
+    /*Usar el objeto FormData para guardar los parámetros que se enviarán:
     var formData = new FormData();
     formData.append('_token', token);
     formData.append('clave', valor);
     */
-    //var token = document.getElementById('token').getAttribute("content");
-    var method = document.getElementById('postSearch').value;
-    var filtro = document.getElementById('Search').value;
+    var token = document.getElementById('token').getAttribute("content");
+    var method = document.getElementById('postFiltro').value;
+    var search = document.getElementById('search').value;
 
     var formData = new FormData();
-    //formData.append('_token', token);
+    formData.append('_token', token);
     formData.append('_method', method);
-    formData.append('titulo', filtro);
+    formData.append('search', search);
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -45,29 +49,32 @@ function filtro() {
     POST -> Sí envía parámetros
     true -> asynchronous
     */
-    ajax.open("GET", "vistaclientes", true);
+    ajax.open("POST", "vistaclientes/shows", true);
     ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(this.responseText);
                 /* Crear la estructura html que se devolverá dentro de una variable recarga*/
                 var recarga = '';
                 for (let i = 0; i < respuesta.length; i++) {
-                    recarga += '@foreach($listaRestaurantes as $restaurante)'
                     recarga += '<div class="div-3-restaurante">'
                     recarga += '<div class="div-3-restaurante-img">'
-                    recarga += '<img src="{{asset(' + storage + ').' / '.' + respuesta[i].foto + '}}">'
+                    recarga += '@if(Session::get(' + respuesta[i].sesion + '))'
+                    recarga += '<a href={{url(' + respuesta[i].mostrar + '/.$restaurante->id)}}><img src="{{asset(' + respuesta[i].storage + ').' / '.$restaurante->foto}}"></a>'
+                    recarga += '@else'
+                    recarga += '<a href=.{{url(' + respuesta[i].formlogin + ')}}.><img src="{{asset(' + respuesta[i].storage + ').' / '.$restaurante->foto}}"></a>'
+                    recarga += '@endif'
                     recarga += '</div>'
                     recarga += '<div class="div-3-restaurante-contenido">'
-                    recarga += '<h5>{{ Str::limit(' + respuesta[i].nombre + ', 24,"") }}</h5>'
-                    recarga += '@if(' + respuesta[i].valoracion + ' <5)'
-                    recarga += '<i class="fas fa-star val-grey"></i><p class="val-grey">&nbsp;' + respuesta[i].valoracion + '&nbsp;</p>'
-                    recarga += '@elseif(' + respuesta[i].valoracion + ' <7.5 && ' + respuesta[i].valoracion + ' >5)'
-                    recarga += '<i class="fas fa-star val-blue"></i><p class="val-blue">&nbsp;' + respuesta[i].valoracion + ' Bueno &nbsp;</p>'
+                    recarga += '<h5>{{ Str::limit($restaurante->nombre, 24,"") }}</h5>'
+                    recarga += '@if($restaurante->valoracion <5)'
+                    recarga += '<i class="fas fa-star val-grey"></i><p class="val-grey">&nbsp;{{$restaurante->valoracion}}&nbsp;</p>'
+                    recarga += '@elseif($restaurante->valoracion <7.5 && $restaurante->valoracion >5)'
+                    recarga += '<i class="fas fa-star val-blue"></i><p class="val-blue">&nbsp;{{$restaurante->valoracion}} Bueno &nbsp;</p>'
                     recarga += '@else'
-                    recarga += '<i class="fas fa-star val-green"></i><p class="val-green">&nbsp;' + respuesta[i].valoracion + ' Excelente &nbsp;</p>'
+                    recarga += '<i class="fas fa-star val-green"></i><p class="val-green">&nbsp;{{$restaurante->valoracion}} Excelente &nbsp;</p>'
                     recarga += '@endif'
                     recarga += '@php'
-                    recarga += '$tipo=DB::select(DB::raw("SELECT tbl_tipo_cocina.tipo FROM tbl_tipo_cocina INNER JOIN tbl_tipo_cocina_restaurante on tbl_tipo_cocina.id=tbl_tipo_cocina_restaurante.tipo_cocina_fk where tbl_tipo_cocina_restaurante.restaurante_fk=:tipo"),array(' + tipo + ' => $restaurante->id));'
+                    recarga += '$tipo=DB::select(DB::raw("SELECT tbl_tipo_cocina.tipo FROM tbl_tipo_cocina INNER JOIN tbl_tipo_cocina_restaurante on tbl_tipo_cocina.id=tbl_tipo_cocina_restaurante.tipo_cocina_fk where tbl_tipo_cocina_restaurante.restaurante_fk=:tipo"),array(' + respuesta[i].tipo + ' => $restaurante->id));'
                     recarga += '@endphp'
                     recarga += '@php $tipo_str=""; @endphp'
                     recarga += '@foreach ($tipo as $tipo)'
@@ -77,7 +84,7 @@ function filtro() {
                     recarga += '@endforeach'
                     recarga += '<p class="tipo-grey">{{ Str::limit($tipo_str, 17,"...") }}</p>'
                     recarga += '@php'
-                    recarga += '$servicio=DB::select(DB::raw("SELECT tbl_servicio.tipo from tbl_servicio INNER JOIN tbl_tipo_servicio_restaurante on tbl_servicio.id=tbl_tipo_servicio_restaurante.tipo_servicio_fk where tbl_tipo_servicio_restaurante.restaurante_fk=:servicio"),array(' + servicio + ' => $restaurante->id));'
+                    recarga += '$servicio=DB::select(DB::raw("SELECT tbl_servicio.tipo from tbl_servicio INNER JOIN tbl_tipo_servicio_restaurante on tbl_servicio.id=tbl_tipo_servicio_restaurante.tipo_servicio_fk where tbl_tipo_servicio_restaurante.restaurante_fk=:servicio"),array(' + respuesta[i].servicio + ' => $restaurante->id));'
                     recarga += '@endphp'
                     recarga += '@php $servicio_str=""; @endphp'
                     recarga += '@foreach ($servicio as $servicio)'
@@ -93,9 +100,9 @@ function filtro() {
                     recarga += '</div>'
                     recarga += '@endforeach'
                 }
-                div.innerHTML = recarga;
-                /* creación de estructura: la estructura que creamos no ha de contener código php ni código blade*/
-                /* utilizamos innerHTML para introduciremos la recarga en el elemento html pertinente */
+                div.innerHTML = recarga
+                    /* creación de estructura: la estructura que creamos no ha de contener código php ni código blade*/
+                    /* utilizamos innerHTML para introduciremos la recarga en el elemento html pertinente */
             }
         }
         /*
