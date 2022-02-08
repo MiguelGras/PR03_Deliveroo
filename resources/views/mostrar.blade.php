@@ -24,6 +24,11 @@
         <div class="div-1-logo">
             <a href="{{url('/vistaclientes')}}"><img src="../storage/deliveroo-logo.png"></a>
         </div>
+        <div class="div-1-sesion">
+                <form action='{{url('logout')}}' method='get'>
+                    <button class='btn bt-logout' type='submit' ><i class='fas fa-user'></i>  Cerrar sesión</button>
+                </form>
+        </div>
     </div>
     <div class="contenido">
         @foreach ($listaRestaurantes as $restaurante)

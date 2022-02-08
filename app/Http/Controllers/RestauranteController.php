@@ -107,7 +107,7 @@ class RestauranteController extends Controller
     }
 /*Login*/
     public function formlogin(){
-        return view('formlogin');
+        return redirect('vistaclientes');
     }
     public function loginPost(Request $request){
         $datos_frm = $request->except('_token','_method');
@@ -121,7 +121,7 @@ class RestauranteController extends Controller
             return redirect('vistaclientes');
         }else{
             //Redirigir al login
-            return redirect('formlogin');
+            return redirect('vistaclientes');
         }
     }
     public function logout(Request $request){

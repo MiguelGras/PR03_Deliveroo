@@ -28,6 +28,29 @@ body {
     height: 100%;
 }
 
+.div-1-sesion {
+    margin-left: 70%;
+    width: 12%;
+    float: left;
+}
+
+.div-1-sesion i {
+    color: #35B8B2;
+}
+
+.bt-logout {
+    background-color: white;
+    border-color: #d6dbdb;
+    color: #333333;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.bt-logout:hover {
+    border-color: #b6bfc8;
+}
+
 .contenido {
     float: left;
     width: 100%;
