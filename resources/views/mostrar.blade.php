@@ -1,3 +1,9 @@
+@if(!Session::get('email'))
+    <?php
+        //Si la session no esta definida te redirige al login.
+        return redirect()->to('vistaclientes')->send();
+    ?>
+@endif
 <!DOCTYPE html>
 <html lang="en">
 <head>

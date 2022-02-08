@@ -78,7 +78,7 @@
             <div class="div-3-restaurante">
                 <div class="div-3-restaurante-img">
                     @if(Session::get('email'))
-                        <a href={{url('crear')}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                        <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
                     @else
                         <a href={{url('formlogin')}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
                     @endif
