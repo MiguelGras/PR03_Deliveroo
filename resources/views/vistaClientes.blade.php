@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/iconos_g.js"></script> <!-- iconos FontAwesome-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jquery-->
     <script src="js/js.js"></script>
+    <script src="js/js.js"></script>
     <script src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Deliveroo - Food Delivery</title>
