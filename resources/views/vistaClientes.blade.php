@@ -28,9 +28,7 @@
                     <button class='btn' type='submit' ><i class='fas fa-user'></i>  Cerrar sesión</button>
                 </form>
             @else
-                <form action='{{url('formlogin')}}' method='get'>
-                    <button class='btn' type='submit' ><i class='fas fa-user'></i>  Iniciar sesión</button>
-                </form>
+                <button class='btn' type='submit' onclick="modal()"><i class='fas fa-user'></i>  Iniciar sesión</button>
             @endif
         </div>
     </div>
@@ -75,12 +73,14 @@
     </div>
     <div class="div-3" id="div-3">
         @foreach($listaRestaurantes as $restaurante)
+            @if(Session::get('email'))
             <div class="div-3-restaurante">
                 <div class="div-3-restaurante-img">
-                    @if(Session::get('email'))
-                        <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
-                    @else
-                        <a href={{url('formlogin')}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                    <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+            @else
+                <div class="div-3-restaurante" onclick="modal()">
+                    <div class="div-3-restaurante-img">
+                        <img src="{{asset('storage').'/'.$restaurante->foto}}">
                     @endif
                 </div>
                 <div class="div-3-restaurante-contenido">
@@ -119,6 +119,28 @@
             </div>
         @endforeach        
     </div>
+</div>
+<div class="region-registrarse modalmask" id="modal">
+    <a href="#cerrar" class="cerrar" id="cerrar">x</a>
+            <div class="registrarse resize">
+                <form action="{{url('login')}}" method="POST" class="registrarse-form">
+                    @csrf
+                    {{method_field('POST')}}
+                    <h1>Inicio de sesion</h1>
+                    <div class="form-group">
+                        <label>Usuario:</label>
+                        <input type="text" class="form-control" name="correo" placeholder="Introduce nombre...">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña:</label>
+                        <input type="password" class="form-control" name="pass" placeholder="Introduce Contraseña...">
+                        <input type="submit" class="btn btn-primary btn-fix" value="Entrar">
+                        <input type="hidden" name="form" value="true">
+                    </div>
+                </form>
+                
+            </div>
+      
 </div>
 
 </body>
