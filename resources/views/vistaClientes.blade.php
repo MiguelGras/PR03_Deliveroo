@@ -123,20 +123,21 @@
 <div class="region-registrarse modalmask" id="modal">
     <a href="#cerrar" class="cerrar" id="cerrar">x</a>
             <div class="registrarse resize">
-                <form action="{{url('login')}}" method="POST" class="registrarse-form">
+                <form action="{{url('login')}}" method="POST" class="registrarse-form" onsubmit="return validar_login()" id="form">
                     @csrf
                     {{method_field('POST')}}
                     <h1>Inicio de sesion</h1>
                     <div class="form-group">
                         <label>Usuario:</label>
-                        <input type="text" class="form-control" name="correo" placeholder="Introduce nombre...">
+                        <input type="text" class="form-control" name="correo" placeholder="Introduce nombre..." id="login_username">
                     </div>
                     <div class="form-group">
                         <label>Contraseña:</label>
-                        <input type="password" class="form-control" name="pass" placeholder="Introduce Contraseña...">
+                        <input type="password" class="form-control" name="pass" placeholder="Introduce Contraseña..." id="login_password">
                         <input type="submit" class="btn btn-primary btn-fix" value="Entrar">
                         <input type="hidden" name="form" value="true">
                     </div>
+                    <div id="texto-mal" class="texto-mal"></div>
                 </form>
                 
             </div>
