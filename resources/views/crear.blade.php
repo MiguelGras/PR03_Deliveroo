@@ -31,7 +31,7 @@
             {{$message}}
         @enderror
         <p>Valoracion</p>
-        <input type="number" name="valoracion" placeholder="Introduce el apellido...">
+        <input type="number" name="valoracion" placeholder="Introduce la valoración...">
         @error('valoracion')
             <br>
             {{$message}}
