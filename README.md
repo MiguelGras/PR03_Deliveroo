@@ -32,7 +32,7 @@ Este proyecto se basa en la simulacion de la administracion de un restaurante. E
 
 >9.- Abrimos nuestro navegador favorito (recomendamos Google Chrome o Mozilla Firefox).
 
->10.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/public"_ con lo que nos quedaria _"localhost/NombreProyecto/public"_ y accederiamos a la pagina principal de login.
+>10.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/public"_ con lo que nos quedaria _"localhost/NombreProyecto/public/vistaclientes"_ y accederiamos a la pagina principal de nuestro proyecto.
 
 
 # Despliegue 📦
