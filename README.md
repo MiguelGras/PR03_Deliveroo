@@ -34,33 +34,31 @@ Este proyecto se basa en la simulacion de la administracion de un restaurante. E
 
 >10.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/public"_ con lo que nos quedaria _"localhost/NombreProyecto/public"_ y accederiamos a la pagina principal de login.
 
-## Sin tener GIT instalado:
-
->1.- Desde GitHub iremos al boton verde el cual pone "Code" ahi veremos la opcion de "Download .ZIP" y nos descargaremos el .ZIP de nuestro proyecto.
->2.- Una vez descargado el .ZIP lo tendremos que colocar dentro de nuestro directorio donde tengamos XAMPP instalado, mas en concreto htdocs. En nuestro caso _"C:\xampp\htdocs"_
->3.- Una vez colocado el contenido de nuestro proyecto, lo que tendremos que hacer es en nuestro XAMPP iniciar el servicio de apache.
->4.- Abrimos nuestro navegador favorito (recomendamos Google Chrome o Mozilla Firefox).
->5.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/view"_ con lo que nos quedaria _"localhost/NombreProyecto/view"_ y accederiamos a la pagina principal de login.
 
 # Despliegue 📦
 
-Una manera de acceder a nuestro proyecto es a traves de http://pr02-rick-deckard.infinityfreeapp.com/
+La unica manera de acceder a nuestro proyecto por el momento es a traves de los pasos previamente mencionados.
+En un futuro cuando el proyecto tome mas rodaje plantearemos hacer un despliegue en un hosting.
 
 # Construido con 🛠️
 Visual Studio Code - El editor de codigo que hemos utilizado para realizar el pryecto
 
 # Versionado 📌
-0.1.40
+0.1.55
 
 # Autores ✒️
-Miguel Gras - Diseñador web, Programador front-end
+Miguel Gras - Diseñador web, Programador front-end, Desarrollador back-end
+Raul Garcia - Diseñador web, Programador front-end, Desarrollador back-end
+Ivan Aguinaga - Diseñador web, Programador front-end, Desarrollador back-end
 
 # Usuarios de entrada
 Admin:
+  raulgras@gmail.com - qwe12345
+  ivangras@gmail.com - qwe12345
   miguelgras@gmail.com - qwe12345
-Camarero:
-  miguelgras@gmail.com - qwe12345
+User:
+  dannygras@gmail.com - qwe12345
 
 # Expresiones de Gratitud 🎁
 Agredecemos el envio de feedback sobre nuestro proyecto y todas la ideas para mejorar nuestro trabajo.
-Muchas gracias por descargaros nuestro trabajo. Esperemos que os guste.
+Muchas gracias por descargaros nuestro proyecto. Esperemos que os guste.
