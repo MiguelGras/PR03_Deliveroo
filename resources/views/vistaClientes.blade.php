@@ -78,7 +78,7 @@
                     @if(Session::get('email'))
                         <div class="div-3-restaurante">
                         <div class="div-3-restaurante-img">
-                        <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                        <a href={{url('mostrarres/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
                     @else
                         <div class="div-3-restaurante" onclick="modal()">
                         <div class="div-3-restaurante-img">
