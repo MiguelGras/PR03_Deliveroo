@@ -52,14 +52,14 @@ Raul Garcia - Diseñador web, Programador front-end, Desarrollador back-end
 Ivan Aguinaga - Diseñador web, Programador front-end, Desarrollador back-end
 
 # Usuarios de entrada
-Admin:
-  >raul@gmail.com - qwe12345
+>1.-Admin:
+  >>raul@gmail.com - qwe12345
   
-  >ivan@gmail.com - qwe12345
+  >>ivan@gmail.com - qwe12345
   
-  >miguel@gmail.com - qwe12345
-User:
-  danny@gmail.com - qwe12345
+  >>miguel@gmail.com - qwe12345
+>2.-User:
+  >>danny@gmail.com - qwe12345
 
 # Expresiones de Gratitud 🎁
 Agredecemos el envio de feedback sobre nuestro proyecto y todas la ideas para mejorar nuestro trabajo.
