@@ -15,7 +15,7 @@ Este proyecto se basa en la simulacion de la administracion de un restaurante. E
 >1.- Desde nuestro Visual Studio Code abrimos una nueva terminal (Ctrl+Shift+ñ)
 >2.- Nos colocamos dentro de nuestro directorio donde tengamos XAMPP instalado, mas en concreto htdocs. En nuestro caso _"C:\xampp\htdocs"_
 >3.- Abrimos una terminal nueva y ahi ejecutamos el siguiente comando _"git clone "enlace del codigo"_", esto nos creara un directorio que contenga el proyecto, en este caso la carpeta se llamara PR1.
->4.- Deberemos ejecutar los siguientes comandos para que nos funcion nuestro proyecto: ``composer install``
+>4.- Deberemos ejecutar los siguientes comandos para que nos funcion nuestro proyecto: ````composer install````
 
 puede que, por problemas de compatibilidad, nos pida correr el comandocomposer update
 
