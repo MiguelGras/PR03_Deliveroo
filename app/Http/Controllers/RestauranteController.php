@@ -137,9 +137,16 @@ class RestauranteController extends Controller
     }
 /*Mostrar*/
     public function vistaCliente(Request $request){ 
-        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.nombre like ?',['%'.$request->input('Search').'%']);
+        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id');
         $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+        //return response()->json($listaRestaurantes);
         return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
+    }
+    public function vistaClientePost(Request $request){ 
+        $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.nombre like ?',['%'.$request->input('search').'%']);
+        $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+        return response()->json($listaRestaurantes);
+        //return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
     }
 
     /**

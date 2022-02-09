@@ -1,5 +1,5 @@
 window.onload = function() {
-    filtro();
+    //filtro();
 }
 
 function objetoAjax() {
@@ -33,13 +33,13 @@ function filtro() {
     formData.append('clave', valor);
     */
     var token = document.getElementById('token').getAttribute("content");
-    var method = document.getElementById('postFiltro').value;
     var search = document.getElementById('search').value;
 
     var formData = new FormData();
     formData.append('_token', token);
-    formData.append('_method', method);
+    formData.append('_method', "POST");
     formData.append('search', search);
+
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -49,7 +49,7 @@ function filtro() {
     POST -> Sí envía parámetros
     true -> asynchronous
     */
-    ajax.open("POST", "vistaclientes/shows", true);
+    ajax.open("POST", "vistaclientes", true);
     ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(this.responseText);

@@ -21,7 +21,7 @@ Route::get('logout',[RestauranteController::class,'logout']);
 
 /*Mostrar vista clientes*/
 Route::get('/vistaclientes',[RestauranteController::class,'vistaCliente']);
-//Route::post('/vistaclientes/shows',[NoteController::class,'shows'])->name('vistaclientes.shows');
+//Route::post('/vistaclientes',[RestauranteController::class,'vistaClientePost']);
 
 /* MOSTRAR */
 Route::get('/mostrar/{id}',[RestauranteController::class, 'mostrarRestaurante']);
