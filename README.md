@@ -1,66 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# PR02-Rick-Deckard
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto se basa en la simulacion de la administracion de un restaurante. En el se puede crear todo tipo de objetos (mesas, salas, usuarios, etc.) a su vez, como camarero, podemos administrar las reservas de dicho restaurante.
 
-## About Laravel
+# Pre-requisitos 📋
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+>1.- En caso de querer modificar el codigo fuente a nuestro gusto necesitaremos un editor de codigo, nosotros recomendamos Visual Studio Code (https://code.visualstudio.com/Download) este editor nos permitira realizar los cambios deseados.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+>2.- Necesitaremos el programa XAMPP para poder interpretar los archivos PHP y no tengamos problemas (https://www.apachefriends.org/es/download.html)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Instalación 🔧
 
-## Learning Laravel
+## Teniendo GIT instalado:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+>1.- Desde nuestro Visual Studio Code abrimos una nueva terminal (Ctrl+Shift+ñ)
+>2.- Nos colocamos dentro de nuestro directorio donde tengamos XAMPP instalado, mas en concreto htdocs. En nuestro caso _"C:\xampp\htdocs"_
+>3.- Abrimos una terminal nueva y ahi ejecutamos el siguiente comando _"git clone "enlace del codigo"_", esto nos creara un directorio que contenga el proyecto, en este caso la carpeta se llamara PR1.
+>4.- Una vez descargado el contenido de nuestro proyecto, lo que tendremos que hacer es en nuestro XAMPP iniciar el servicio de apache.
+>5.- Abrimos nuestro navegador favorito (recomendamos Google Chrome o Mozilla Firefox).
+>6.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/view"_ con lo que nos quedaria _"localhost/NombreProyecto/view"_ y accederiamos a la pagina principal de login.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Sin tener GIT instalado:
 
-## Laravel Sponsors
+>1.- Desde GitHub iremos al boton verde el cual pone "Code" ahi veremos la opcion de "Download .ZIP" y nos descargaremos el .ZIP de nuestro proyecto.
+>2.- Una vez descargado el .ZIP lo tendremos que colocar dentro de nuestro directorio donde tengamos XAMPP instalado, mas en concreto htdocs. En nuestro caso _"C:\xampp\htdocs"_
+>3.- Una vez colocado el contenido de nuestro proyecto, lo que tendremos que hacer es en nuestro XAMPP iniciar el servicio de apache.
+>4.- Abrimos nuestro navegador favorito (recomendamos Google Chrome o Mozilla Firefox).
+>5.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/view"_ con lo que nos quedaria _"localhost/NombreProyecto/view"_ y accederiamos a la pagina principal de login.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Despliegue 📦
 
-### Premium Partners
+Una manera de acceder a nuestro proyecto es a traves de http://pr02-rick-deckard.infinityfreeapp.com/
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+# Construido con 🛠️
+Visual Studio Code - El editor de codigo que hemos utilizado para realizar el pryecto
 
-## Contributing
+# Versionado 📌
+0.1.40
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Autores ✒️
+Miguel Gras - Diseñador web, Programador front-end
 
-## Code of Conduct
+# Usuarios de entrada
+Admin:
+  miguelgras@gmail.com - qwe12345
+Camarero:
+  miguelgras@gmail.com - qwe12345
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Expresiones de Gratitud 🎁
+Agredecemos el envio de feedback sobre nuestro proyecto y todas la ideas para mejorar nuestro trabajo.
+Muchas gracias por descargaros nuestro trabajo. Esperemos que os guste.
