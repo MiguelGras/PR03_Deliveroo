@@ -131,7 +131,7 @@
                     <h1>Inicio de sesion</h1>
                     <div class="form-group">
                         <label>Usuario:</label>
-                        <input type="text" class="form-control" name="correo" placeholder="Introduce nombre..." id="login_username">
+                        <input type="email" class="form-control" name="correo" placeholder="Introduce nombre..." id="login_username">
                     </div>
                     <div class="form-group">
                         <label>Contraseña:</label>
