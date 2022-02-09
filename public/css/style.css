@@ -457,6 +457,18 @@ form.registrarse-form label {
     color: white;
 }
 
+.btn-fix:focus {
+    background-color: #2aada7;
+    border: 1px solid #2aada7;
+}
+
 .btn-fix:hover {
     background-color: #2aada7;
+}
+
+.texto-mal {
+    position: absolute;
+    bottom: 37%;
+    color: red;
+    width: 40vh;
 }
