@@ -53,11 +53,11 @@ Ivan Aguinaga - Diseñador web, Programador front-end, Desarrollador back-end
 
 # Usuarios de entrada
 Admin:
-  raulgras@gmail.com - qwe12345
+  >raulgras@gmail.com - qwe12345
   
-  ivangras@gmail.com - qwe12345
+  >ivangras@gmail.com - qwe12345
   
-  miguelgras@gmail.com - qwe12345
+  >miguelgras@gmail.com - qwe12345
 User:
   dannygras@gmail.com - qwe12345
 
