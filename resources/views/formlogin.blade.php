@@ -13,7 +13,7 @@
         {{method_field('POST')}}
         <h1>Inicio de sesion</h1><br>
         <p>Usuario:</p>
-        <input type="text" class="form-control" name="correo" placeholder="Introduce nombre...">
+        <input type="email" class="form-control" name="correo" placeholder="Introduce nombre...">
         <p>Contraseña:</p>
         <input type="password" class="form-control" name="pass" placeholder="Introduce Contraseña...">
         <br>

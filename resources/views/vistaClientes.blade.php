@@ -8,7 +8,8 @@
     <script type="text/javascript" src="js/iconos_g.js"></script> <!-- iconos FontAwesome-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jquery-->
     <script src="js/js.js"></script>
-    <script src="js/ajax.js"></script>
+    <!--<script src="js/ajax.js"></script>-->
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="css/style.css">
     <title>Deliveroo - Food Delivery</title>
 </head>
@@ -19,8 +20,9 @@
         </div>
         <div class="div-1-input-busqueda">
             <i class="fa fa-search"></i>
-            <input type="hidden" name="_method" value="POST" id="postSearch">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" id="Search" aria-label="Search" onkeyup="filtro(); return false;">
+        <form method="post" onsubmit="return false;">   
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" aria-label="Search" onkeyup="filtro(); return false;">
+        </form>
         </div>
         <div class="div-1-sesion">
             @if(Session::get('email'))
@@ -73,13 +75,13 @@
     </div>
     <div class="div-3" id="div-3">
         @foreach($listaRestaurantes as $restaurante)
-            @if(Session::get('email'))
-            <div class="div-3-restaurante">
-                <div class="div-3-restaurante-img">
-                    <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
-            @else
-                <div class="div-3-restaurante" onclick="modal()">
-                    <div class="div-3-restaurante-img">
+                    @if(Session::get('email'))
+                        <div class="div-3-restaurante">
+                        <div class="div-3-restaurante-img">
+                        <a href={{url('mostrar/'.$restaurante->id)}}><img src="{{asset('storage').'/'.$restaurante->foto}}"></a>
+                    @else
+                        <div class="div-3-restaurante" onclick="modal()">
+                        <div class="div-3-restaurante-img">
                         <img src="{{asset('storage').'/'.$restaurante->foto}}">
                     @endif
                 </div>
