@@ -17,10 +17,16 @@ Este proyecto se basa en la simulacion de la administracion de un restaurante. E
 >2.- Nos colocamos dentro de nuestro directorio donde tengamos XAMPP instalado, mas en concreto htdocs. En nuestro caso _"C:\xampp\htdocs"_.
 
 >3.- Abrimos una terminal nueva y ahi ejecutamos el siguiente comando _"git clone "enlace del codigo"_", esto nos creara un directorio que contenga el proyecto, en este caso la carpeta se llamara PR1.
+
 >4.- Deberemos ejecutar los siguientes comandos para que nos funcion nuestro proyecto: ```composer install``` 
 >>Puede que, por problemas de compatibilidad, nos pida correr el comando: ```composer update```
->5.-
->>4.- Una vez descargado el contenido de nuestro proyecto, lo que tendremos que hacer es en nuestro XAMPP iniciar el servicio de apache.
+
+>5.-Crear el fichero ```.env``` en el directorio principal del proyecto con el contenido pertinente sera necesario para el funcionamiento del proyecto
+>>Se puede utilizar el fichero .env.example para generar el nuevo .env
+
+>6.-Finalmente, Laravel puede pedir que se ejecute el comando ```php artisan key:generate´´´ para generar una nueva variable de entorno APP_KEY
+
+>4.- Una vez descargado el contenido de nuestro proyecto, lo que tendremos que hacer es en nuestro XAMPP iniciar el servicio de apache.
 >5.- Abrimos nuestro navegador favorito (recomendamos Google Chrome o Mozilla Firefox).
 >6.- Como url colocaremos lo siguiente _"localhost/"_ y podremos ver las carpetas que contiene nuestro proyecto. Si no deseamos ver las carpetas al final de la ruta añadimos _"/view"_ con lo que nos quedaria _"localhost/NombreProyecto/view"_ y accederiamos a la pagina principal de login.
 
