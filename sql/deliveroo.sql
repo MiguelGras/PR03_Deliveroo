@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2022 a las 19:37:18
+-- Tiempo de generación: 09-02-2022 a las 08:55:50
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `deliveroo`
 --
-CREATE DATABASE IF NOT EXISTS `deliveroo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
-USE `deliveroo`;
 
 -- --------------------------------------------------------
 
@@ -40,13 +38,15 @@ CREATE TABLE `tbl_foto` (
 --
 
 INSERT INTO `tbl_foto` (`id`, `foto`, `restaurante_fk`) VALUES
-(1, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 1),
-(2, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 4),
-(3, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 2),
-(4, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 3),
-(5, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 5),
-(6, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 6),
-(7, 'uploads/rajIUVScBbnVix4XOjbW8jZXRys1oShYW8ltbFig.png', 7);
+(1, 'uploads/foto1.jpg', 1),
+(2, 'uploads/foto3.jpg', 4),
+(3, 'uploads/foto4.jpg', 2),
+(4, 'uploads/foto5.jpg', 3),
+(5, 'uploads/foto6.jpg', 5),
+(6, 'uploads/foto7.jpg', 6),
+(7, 'uploads/foto8.jpg', 7),
+(8, 'uploads/foto9.jpg', 11),
+(9, 'uploads/foto10.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -57,22 +57,25 @@ INSERT INTO `tbl_foto` (`id`, `foto`, `restaurante_fk`) VALUES
 CREATE TABLE `tbl_restaurante` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `valoracion` int(2) NOT NULL,
-  `tiempo_medio` varchar(2) DEFAULT NULL
+  `valoracion` decimal(2,1) NOT NULL,
+  `tiempo_medio` varchar(2) DEFAULT NULL,
+  `descripcion` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_restaurante`
 --
 
-INSERT INTO `tbl_restaurante` (`id`, `nombre`, `valoracion`, `tiempo_medio`) VALUES
-(1, 'McDonald\'s', 10, '25'),
-(2, 'Roadhouse', 5, '40'),
-(3, 'Burrito\'s Way', 7, '15'),
-(4, 'Burger King', 4, '30'),
-(5, 'Kawa Sushi', 9, '25'),
-(6, 'Rocky Asador', 6, '30'),
-(7, 'Taco Bell', 9, '15');
+INSERT INTO `tbl_restaurante` (`id`, `nombre`, `valoracion`, `tiempo_medio`, `descripcion`) VALUES
+(1, 'McDonald\'s', '9.9', '25', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(2, 'Roadhouse', '5.6', '40', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(3, 'Burrito\'s Way', '7.4', '15', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(4, 'Burger King', '4.3', '30', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(5, 'Kawa Sushi', '9.0', '25', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(6, 'Rocky Asador', '6.5', '30', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(7, 'Taco Bell', '9.2', '15', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(11, 'Burrito Gold', '6.8', '25', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.'),
+(12, 'Manolo Bakes', '8.6', '25', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque libero magna, consectetur vel lacinia tincidunt, rutrum eget nibh. Nunc interdum tincidunt mauris eget ullamcorper. Nullam in erat sed metus pretium egestas. Sed nisl elit, ultrices quis consequat pellentesque, volutpat eu mi. Maecenas nisl justo, sodales vitae fermentum in, aliquam vitae sem. Duis posuere, dui ut fringilla aliquam, urna felis faucibus erat, in suscipit est velit vel urna.');
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,12 @@ INSERT INTO `tbl_tipo_cocina_restaurante` (`id`, `restaurante_fk`, `tipo_cocina_
 (7, 4, 5),
 (8, 5, 4),
 (9, 6, 1),
-(10, 7, 6);
+(10, 7, 6),
+(11, 1, 6),
+(12, 5, 6),
+(14, 11, 6),
+(15, 11, 1),
+(16, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -170,7 +178,10 @@ INSERT INTO `tbl_tipo_servicio_restaurante` (`id`, `restaurante_fk`, `tipo_servi
 (7, 4, 2),
 (8, 5, 2),
 (9, 6, 1),
-(10, 7, 1);
+(10, 7, 1),
+(11, 11, 2),
+(12, 11, 1),
+(13, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -255,13 +266,13 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_foto`
 --
 ALTER TABLE `tbl_foto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_restaurante`
 --
 ALTER TABLE `tbl_restaurante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_servicio`
@@ -279,13 +290,13 @@ ALTER TABLE `tbl_tipo_cocina`
 -- AUTO_INCREMENT de la tabla `tbl_tipo_cocina_restaurante`
 --
 ALTER TABLE `tbl_tipo_cocina_restaurante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_tipo_servicio_restaurante`
 --
 ALTER TABLE `tbl_tipo_servicio_restaurante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
