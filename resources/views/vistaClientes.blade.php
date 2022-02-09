@@ -10,7 +10,6 @@
     <script src="js/js.js"></script>
     <script src="js/ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Deliveroo - Food Delivery</title>
 </head>
 <body>
@@ -20,10 +19,8 @@
         </div>
         <div class="div-1-input-busqueda">
             <i class="fa fa-search"></i>
-            <form method="post" onsubmit="return false;">
-                <input type="hidden" name="_method" value="POST" id="postFiltro">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" name="search" aria-label="Search" onkeyup="filtro(); return false;">
-            </form>
+            <input type="hidden" name="_method" value="POST" id="postSearch">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" aria-label="Search" onkeyup="filtro(); return false;">
         </div>
         <div class="div-1-sesion">
             @if(Session::get('email'))
