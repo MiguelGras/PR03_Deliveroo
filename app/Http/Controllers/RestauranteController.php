@@ -115,10 +115,14 @@ class RestauranteController extends Controller
         $password=$datos_frm['pass'];
         $password=md5($password);
         $users = DB::table("tbl_usuario")->where('correo','=',$email)->where('pass','=',$password)->count();
-        if($users == 1){
+        $tipouser = DB::table("tbl_usuario")->where('tipo','=','Admin')->where('correo','=',$email)->count();
+        if($users == 1 && $tipouser == 0){
             //Establecer la sesion
             $request->session()->put('email',$request->correo);
             return redirect('vistaclientes');
+        }elseif($users == 1 && $tipouser == 1){
+            $request->session()->put('email',$request->correo);
+            return redirect('vistaadmin');
         }else{
             //Redirigir al login
             return redirect('vistaclientes');
@@ -132,18 +136,11 @@ class RestauranteController extends Controller
         return redirect('vistaclientes');
     }
 /*Mostrar*/
-    public function vistaCliente(Request $request){
-        try {
-            DB::beginTransaction();
-            $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.nombre like ?',['%'.$request->input('Search').'%']);
-            $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
-            DB::commit();
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return $th->getMessage();
-        }
-        return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
-    }
+public function vistaCliente(Request $request){ 
+    $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.nombre like ?',['%'.$request->input('Search').'%']);
+    $listaTipo=DB::select('SELECT tipo from tbl_tipo_cocina;');
+    return view('vistaclientes', compact('listaRestaurantes'), compact('listaTipo') );
+}
 
     /**
      * Show the form for creating a new resource.
