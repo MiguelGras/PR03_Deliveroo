@@ -31,13 +31,23 @@
             {{$message}}
         @enderror
         <p>Valoracion</p>
-        <input type="number" name="valoracion" placeholder="Introduce la valoracion...">
+        <input type="number" name="valoracion" placeholder="Introduce el apellido...">
         @error('valoracion')
             <br>
             {{$message}}
         @enderror
-        <p>Tipo</p>
-        <input type="text" name="tipo" placeholder="Introduce el tipo de comida...">
+        <br>
+        <br>
+        <label for="tipo">Escoge tipo:</label>
+
+        <select name="tipo">
+            <option value="1">Americana</option>
+            <option value="2">Italiana</option>
+            <option value="3">Pizza</option>
+            <option value="4">Sushi</option>
+            <option value="5">Burguir</option>
+            <option value="6">Sandwich</option>
+        </select>
         @error('tipo')
             <br>
             {{$message}}
@@ -48,6 +58,7 @@
             <br>
             {{$message}}
         @enderror
+
         <div>
             <input type="submit" value="Enviar">
         </div>

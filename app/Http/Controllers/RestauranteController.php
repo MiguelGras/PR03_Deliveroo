@@ -18,14 +18,21 @@ class RestauranteController extends Controller
 
     public function mostrarRestaurante($id){
         $listaRestaurantes=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio,tbl_restaurante.descripcion from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id where tbl_restaurante.id='.$id.';');
-        return view('mostrar', compact('listaRestaurantes'));
-        //return $listaRestaurantes;
+        return view('mostrarres', compact('listaRestaurantes'));
+        
     }
-
+    
+    public function mostrarRestauranteAdmin(){
+        $listaRestaurante=DB::select('select tbl_restaurante.id,tbl_restaurante.nombre,tbl_restaurante.valoracion,tbl_foto.foto,tbl_restaurante.tiempo_medio from tbl_restaurante inner join tbl_foto on tbl_foto.restaurante_fk=tbl_restaurante.id order by tbl_restaurante.id asc');
+        return view('mostrar', compact('listaRestaurante'));
+    }
+    
     public function eliminarRestaurante($id){
         try{
             DB::beginTransaction();
-            DB::table('tbl_tipo_cocina')->where('id','=',$id)->delete();
+            DB::table('tbl_tipo_cocina_restaurante')->where('restaurante_fk','=',$id)->delete();
+            DB::table('tbl_tipo_servicio_restaurante')->where('restaurante_fk','=',$id)->delete();
+            DB::table('tbl_foto')->where('restaurante_fk','=',$id)->delete();
             DB::table('tbl_restaurante')->where('id','=',$id)->delete();
             DB::commit();
         }catch(\Exception $e){
@@ -34,6 +41,7 @@ class RestauranteController extends Controller
         }
         return redirect('mostrar');
     }
+    
 
 /*Crear*/
     public function crearRestaurante(){
@@ -46,7 +54,6 @@ class RestauranteController extends Controller
             'nombre'=>'required|string|max:30',
             'valoracion'=>'required|int|min:0|max:10',
             'tipo'=>'required|string|max:10|min:0',
-            'foto'=>'required|mimes:jpg,png,jpeg,webp,svg'
         ]);
         if($request->hasFile('foto')){
             $datos['foto'] = $request->file('foto')->store('uploads','public');
@@ -56,8 +63,12 @@ class RestauranteController extends Controller
     
         try{
             DB::beginTransaction();
-            $id = DB::table('tbl_tipo_cocina')->insertGetId(["foto"=>$datos['foto'],"tipo"=>$datos['tipo']]);
-            DB::table('tbl_restaurante')->insertGetId(["nombre"=>$datos['nombre'],"valoracion"=>$datos['valoracion'],"id"=>$id]);
+            $id = DB::table('tbl_restaurante')->insertGetId(["nombre"=>$datos['nombre'],"valoracion"=>$datos['valoracion']]);
+            //DB::table('tbl_restaurante')->insertGetId(["id"=>$id]);
+            $id2 = DB::table('tbl_restaurante')->max('id');
+            DB::table('tbl_foto')->insertGetId(["foto"=>$datos['foto'],"restaurante_fk"=>$id2]);
+            //DB::table('tbl_foto')->insertGetId(["foto"=>$datos['foto']]);
+            DB::table('tbl_tipo_cocina_restaurante')->insertGetId(["tipo_cocina_fk"=>$datos['tipo'],"restaurante_fk"=>$id2]);
             DB::commit();
         }catch(\Exception $e){
             DB::rollBack();
@@ -67,27 +78,29 @@ class RestauranteController extends Controller
     }
     
     public function modificarRestaurante($id){
-        $restaurante=DB::table('tbl_restaurante')->join('tbl_tipo_cocina','tbl_restaurante.id','=','tbl_tipo_cocina.id')->select()->where('tbl_restaurante.id','=',$id)->first();
+        $restaurante=DB::table('tbl_restaurante')->join('tbl_tipo_cocina','tbl_restaurante.id','=','tbl_tipo_cocina.id')->join('tbl_foto','tbl_restaurante.id','=','tbl_foto.restaurante_fk')->select()->where('tbl_restaurante.id','=',$id)->first();
         return view('modificar', compact('restaurante'));
     }
     
     public function modificarRestaurantePut(Request $request){
-        $datos=$request->except('_token','_method','nombre','valoracion');
+        $datos=$request->except('_token','_method','nombre','valoracion','tipo');
         if ($request->hasFile('foto')) {
-            $foto = DB::table('tbl_tipo_cocina')->select('foto')->where('id','=',$request['id'])->first();
+            $foto = DB::table('tbl_foto')->select('foto')->where('restaurante_fk','=',$request['id'])->first();
             if ($foto->foto != null) {
                 Storage::delete('public/'.$foto->foto);
             }
             $datos['foto'] = $request->file('foto')->store('uploads','public');
         }else{
-            $foto = DB::table('tbl_tipo_cocina')->select('foto')->where('id','=',$request['id'])->first();
+            $foto = DB::table('tbl_foto')->select('foto')->where('restaurante_fk','=',$request['id'])->first();
             $datos['foto'] = $foto->foto;
         }
         $datosres=$request->except('_token','_method','foto','tipo');
+        $datostipo=$request->except('_token','_method','foto','nombre','valoracion');
         try {
             DB::beginTransaction();
             DB::table('tbl_restaurante')->where('id','=',$datosres['id'])->update($datosres);
-            DB::table('tbl_tipo_cocina')->where('id','=',$datos['id'])->update($datos);
+            DB::table('tbl_tipo_cocina')->where('id','=',$datostipo['id'])->update($datostipo);
+            DB::table('tbl_foto')->where('restaurante_fk','=',$datos['id'])->update($datos);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
@@ -122,7 +135,7 @@ class RestauranteController extends Controller
             return redirect('vistaclientes');
         }elseif($users == 1 && $tipouser == 1){
             $request->session()->put('email',$request->correo);
-            return redirect('vistaadmin');
+            return redirect('mostrar');
         }else{
             //Redirigir al login
             return redirect('vistaclientes');
